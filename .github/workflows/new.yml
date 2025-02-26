@@ -8,9 +8,9 @@ on:
             - 'feature/*'
 env:
     MONGO_URL: 'mongodb+srv://supercluster.d83jj.mongodb.net/superData'
-    MONGO_USERNAME: ${{ var.username}}
+    MONGO_USERNAME: ${{ vars.username}}
     MONGO_PASSWORD: ${{secrets.passwrod}}   
-                
+
 jobs:            
     unit_testing:
         name: Unit Testing
