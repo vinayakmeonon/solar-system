@@ -16,10 +16,10 @@ jobs:
         name: Unit Testing
         strategy:
           matrix:
-            node_version: [18,19]
+            node_version: [18,19,20]
             operating_system: [ubuntu-latest,macos-latest]
             exclude:
-              - node_version: 18
+              - node_version: 19
                 operating_system: macos-latest
 
         runs-on: ${{matrix.operating_system}}
