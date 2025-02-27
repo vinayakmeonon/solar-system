@@ -42,5 +42,5 @@ jobs:
             - name: Download test report
               uses : actions/upload-artifact@v4
               with:
-                name: vinu
+                name: vinu-${{matrix.node_version}}-${{matrix.operating_system}}
                 path: test-results.xml
