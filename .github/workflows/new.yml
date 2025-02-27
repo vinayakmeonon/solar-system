@@ -29,3 +29,10 @@ jobs:
 
             - name: run unit test
               run : npm test  
+
+
+            - name: Download test report
+              uses : echapmanFromBunnings/upload-artifact@3.0
+              with:
+                name: 'test'
+                path: 'report.xml'
