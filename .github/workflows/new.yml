@@ -30,7 +30,7 @@ jobs:
             - name: install node js
               uses: actions/setup-node@v4
               with: 
-                node-version: 18
+                node-version: ${{matrix.node_version}}
 
             - name : Install dependency
               run : npm install
