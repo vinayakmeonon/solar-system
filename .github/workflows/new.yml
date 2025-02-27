@@ -32,7 +32,7 @@ jobs:
 
 
             - name: Download test report
-              uses : echapmanFromBunnings/upload-artifact@3.0
+              uses : actions/upload-artifact@v4
               with:
                 name: 'test'
                 path: 'report.xml'
