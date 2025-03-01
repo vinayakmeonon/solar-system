@@ -44,3 +44,38 @@ jobs:
               with:
                 name: vinu-${{matrix.node_version}}-${{matrix.operating_system}}
                 path: test-results.xml
+    code_coverage:
+        name: code coverage
+        # strategy:
+        #   matrix:
+        #     node_version: [18,19,20]
+        #     operating_system: [ubuntu-latest,macos-latest]
+        #     exclude:
+        #       - node_version: 19
+        #         operating_system: macos-latest
+
+        runs-on: ubuntu-latest  
+        #${{matrix.operating_system}}
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+
+            - name: install node js
+              uses: actions/setup-node@v4
+              with: 
+                node-version: 18
+                #${{matrix.node_version}}
+
+            - name : Install dependency
+              run : npm install
+                
+            - name: run unit test
+              run : npm code coverage 
+
+
+            - name: Download test report
+              uses : actions/upload-artifact@v4
+              with:
+                name: vinucoverage
+                #${{matrix.node_version}}-${{matrix.operating_system}}
+                path: coverage
