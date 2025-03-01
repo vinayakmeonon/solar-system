@@ -70,7 +70,7 @@ jobs:
               run : npm install
                 
             - name: run unit test
-              run : npm code coverage 
+              run : npm coverage 
 
 
             - name: Download test report
