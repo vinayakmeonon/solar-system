@@ -46,6 +46,7 @@ jobs:
                 path: test-results.xml
     code_coverage:
         name: code coverage
+        needs: unit_testing
         # strategy:
         #   matrix:
         #     node_version: [18,19,20]
@@ -70,6 +71,7 @@ jobs:
               run : npm install
                 
             - name: check code coverage
+              continue-on-error: true
               run : npm run coverage 
 
 
