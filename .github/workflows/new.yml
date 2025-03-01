@@ -69,8 +69,8 @@ jobs:
             - name : Install dependency
               run : npm install
                 
-            - name: run unit test
-              run : npm coverage 
+            - name: check code coverage
+              run : npm run coverage 
 
 
             - name: Download test report
