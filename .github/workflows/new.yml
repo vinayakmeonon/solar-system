@@ -47,6 +47,7 @@ jobs:
                 name: vinu-${{matrix.node_version}}-${{matrix.operating_system}}
                 path: test-results.xml
     code_coverage:
+        if: failure()
         name: code coverage
         needs: unit_testing
         # strategy:
