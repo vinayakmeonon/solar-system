@@ -41,6 +41,7 @@ jobs:
 
 
             - name: Download test report
+              if: failure()
               uses : actions/upload-artifact@v4
               with:
                 name: vinu-${{matrix.node_version}}-${{matrix.operating_system}}
