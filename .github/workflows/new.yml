@@ -41,13 +41,13 @@ jobs:
 
 
             - name: Download test report
-              if: failure()
+              if: steps.test_id.outcome ==success()
               uses : actions/upload-artifact@v4
               with:
                 name: vinu-${{matrix.node_version}}-${{matrix.operating_system}}
                 path: test-results.xml
     code_coverage:
-        if: failure()
+        if: success()
         name: code coverage
         needs: unit_testing
         # strategy:
