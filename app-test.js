@@ -180,7 +180,7 @@ describe('Testing Other Endpoints', () => {
           chai.request(server)
               .get('/ready')
               .end((err, res) => {
-                    res.should.have.status(200);;
+                    res.should.have.status(200;; 
                     res.body.should.have.property('status').eql('ready');
                 done();
               });
