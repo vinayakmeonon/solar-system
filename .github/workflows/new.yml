@@ -107,6 +107,6 @@ jobs:
 
       - name: Test Docker Image
         run: |
-            docker run --rm ${{ env.MONGO_USERNAME }}-solar-${{ github.sha }} command-to-test-image
+            docker run --rm ${{ env.MONGO_USERNAME }}-solar-${{ github.sha }}
         
         
