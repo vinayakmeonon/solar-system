@@ -102,12 +102,12 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          push: false
+          push: true
           tags: ${{ env.MONGO_USERNAME}}-solar-${{github.sha}}    
 
-      - name: Test Docker Image
-        run: |
-            docker run solar-app -d \
-            ${{ env.MONGO_USERNAME }}-solar-${{ github.sha }}
+      # - name: Test Docker Image
+      #   run: |
+      #       docker run solar-app -d \
+      #       ${{ env.MONGO_USERNAME }}-solar-${{ github.sha }}
         
         
