@@ -105,9 +105,9 @@ jobs:
           push: true
           tags: ${{ vars.DOCKERHUB_USERNAME }}/solar-${{github.sha}}    
 
-      # - name: Test Docker Image
-      #   run: |
-      #       docker run solar-app -d \
-      #       ${{ vars.DOCKERHUB_USERNAME  }}-solar-${{ github.sha }}
+      - name: Test Docker Image
+        run: |
+            docker run solar-app -d \
+            ${{ vars.DOCKERHUB_USERNAME  }}/solar-${{ github.sha }}
         
         
