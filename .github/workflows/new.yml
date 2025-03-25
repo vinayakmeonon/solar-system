@@ -16,8 +16,8 @@ jobs:
         name: Unit Testing
         strategy:
           matrix:
-            node_version: [18,19,20]
-            operating_system: [ubuntu-latest,macos-latest]
+            node_version: [18,19]
+            operating_system: [ubuntu-latest]
             exclude:
               - node_version: 19
                 operating_system: macos-latest
@@ -96,14 +96,25 @@ jobs:
         uses: docker/login-action@v3
         with:
           username: ${{ vars.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}    
+          password: ${{ secrets.DOCKERHUB_TOKEN }}   
+      
+      - name: Login to github registry
+        uses: docker/login-action@v3
+        with:
+            registry: ghcr.io
+            username: ${{ github.repository_owner }}
+            password: ${{ secrets.GITHUB_TOKEN}}        
 
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
           context: .
           push: true
-          tags: ${{ vars.DOCKERHUB_USERNAME }}/solar-${{github.sha}}    
+          tags: |
+           ${{ vars.DOCKERHUB_USERNAME }}/solar-${{github.sha}}  
+           ghcr.io/${{ github.repository_owner }}/solar-${{github.sha}}    
+
+
 
       - name: Test Docker Image
         run: |
