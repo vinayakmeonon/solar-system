@@ -107,7 +107,7 @@ jobs:
 
       - name: Test Docker Image
         run: |
-            docker images \
+            docker images 
             docker run -d ${{ vars.DOCKERHUB_USERNAME  }}/solar-${{ github.sha }}
         
         
