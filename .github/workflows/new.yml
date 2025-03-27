@@ -127,7 +127,7 @@ jobs:
     kubernets:
       name: deploy k8's
       needs: [docker_login]
-      runs-on: ubuntu_latest
+      runs-on: ubuntu-latest
       steps:
         - name: Checkout
           uses: actions/checkout@v2
