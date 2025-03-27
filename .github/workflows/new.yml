@@ -122,5 +122,30 @@ jobs:
         run: |
             docker images 
             docker run -d ${{ vars.DOCKERHUB_USERNAME  }}/solar-${{ github.sha }}
+
+
+    kubernets:
+      name: deploy k8's
+      needs: [docker_login]
+      runs-on: ubuntu_latest
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v2
+
+        - name: Install kubectl
+          uses: azure/setup-kubectl@v4
+          with:
+             version: 'v1.26.0' # default is latest stable
+
+        - name: set context
+          uses: azure/k8s-set-context@v4
+          with:
+            method: kubeconfig
+            kubeconfig: ${{secrets.kubeconfig}}
+        
+
+        - name: get context
+          run: 
+            kubectl get nodes
         
         
